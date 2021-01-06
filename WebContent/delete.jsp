@@ -9,9 +9,13 @@
 
 	GuestDao guestDao = new GuestDao();
 	GuestVo guestVo = new GuestVo(no, password);
-	guestDao.guestDelete(guestVo);
 	
-	response.sendRedirect("./addList.jsp");
+	int count = guestDao.guestDelete(guestVo);
+	
+	if (count == 1) {
+		response.sendRedirect("./addList.jsp");	
+	}
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -20,6 +24,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-삭제
+	
+	<%if (count == 0)  {%>
+		<h1>비밀번호가  잘못되었습니다.</h1><br>
+		<a href="./deleteForm.jsp?no=<%=guestVo.getNo()%>">비밀번호 다시 입력하기</a>
+	<%} %>
 </body>
 </html>

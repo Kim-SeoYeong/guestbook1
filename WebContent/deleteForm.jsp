@@ -18,7 +18,7 @@
 <body>
 	<form action="./delete.jsp" method="get">
 		비밀번호 : <input type = "text" name="password">
-		<button type="submit">확인</button>
+		<button type="submit">확인</button><br>
 		<!-- 비밀번호가 같은사람이 있을 수 있어서 no로 한번 더 구분해주기 위해 -->
 		<input type="hidden" name="no" value="<%=guestVo.getNo()%>">
 	</form>
